@@ -1,1 +1,787 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+:root {
+  --primary-color: #009688;
+  --light-color: #f3f3f3;
+  --dark-color: #333;
+  --secondary-color: #e65100;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* font-family: 'Josefin Sans', sans-serif; */
+  /* font-family: 'Raleway', sans-serif; */
+  font-family: "Nunito", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+.px-half {
+  padding: 0 0.5rem;
+}
+
+.px-1 {
+  padding: 0 1.5rem;
+}
+.py-1 {
+  padding: 1.5rem 0;
+}
+.py-3 {
+  padding: 3rem 0;
+}
+.py-2 {
+  padding: 2rem 0;
+}
+
+.p-1 {
+  padding: 1.5rem;
+}
+.p-3 {
+  padding: 3rem;
+}
+.p-2 {
+  padding: 2rem;
+}
+.w-100 {
+  max-width: 100%;
+}
+.justify-c {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#navbar {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  background: var(--primary-color);
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  /* border-bottom: 1px solid #ccc; */
+}
+
+#navbar h1 {
+  cursor: pointer;
+}
+#navbar h1:hover,
+#navbar i:hover {
+  opacity: 0.8;
+  transition: all 0.5s ease-in;
+}
+#navbar ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#navbar ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1rem;
+  height: 100%;
+  padding-right: 1rem;
+}
+
+#navbar ul li i {
+  font-size: 1rem;
+  padding-right: 0.5rem;
+}
+
+#navbar ul li:hover {
+  transition: all 0.3s ease-in;
+  background: var(--light-color);
+  color: var(--primary-color);
+}
+
+#navbar ul li a {
+  padding-right: 0.5rem;
+}
+
+#navbar ul li a:hover,
+#navbar ul li i:hover {
+  opacity: 0.8;
+  transition: all 0.3s ease-in;
+}
+
+#content {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  width: 100%;
+  height: 100%;
+  margin-top: 70px;
+  /* overflow: hidden; */
+}
+
+.sidebar {
+  width: 100%;
+  background: var(--light-color);
+  height: 100vh;
+}
+
+.main-content {
+  width: 100%;
+  height: 100%;
+  background: white;
+  padding-right: 2rem;
+}
+
+.sidebar ul li a {
+  display: block;
+  padding: 1rem;
+  color: var(--dark-color);
+}
+.sidebar ul li a i {
+  padding-right: 0.5rem;
+}
+
+.sidebar ul li a:hover {
+  background: var(--primary-color);
+  color: white;
+  transition: all 0.3s ease-in;
+}
+
+.main-content-heading {
+  color: var(--dark-color);
+  font-size: 1.2rem;
+}
+
+.main-content-sub-heading {
+  padding-left: 1.2rem;
+}
+
+.box {
+  gap: 1rem;
+  border: 1px solid var(--light-color);
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 0 1rem;
+  width: 100%;
+  background: var(--light-color);
+}
+
+.box .box-header {
+  color: var(--primary-color);
+  font-weight: bold;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.box .box-action-button {
+  text-align: end;
+}
+
+.owner-info-box {
+  padding: 0;
+  border-radius: 5px;
+  max-width: 15rem;
+}
+/* search owner */
+.box .box-header-primary {
+  margin: 0;
+  background: var(--primary-color);
+  border-radius: 5px 5px 0 0;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.owner-info-box-content {
+  display: flex !important;
+  flex-direction: column-reverse;
+  height: 15rem;
+  padding: 0.5rem 1rem;
+  /* margin-top: 3rem; */
+}
+.owner-info-box-content h5 {
+  padding-bottom: 1rem;
+}
+.owner-info-box-img {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.owner-info-box-content img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+}
+.owner-info-box-content .owner-info-box-details {
+  margin-top: 1rem;
+}
+.bill-info {
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr;
+}
+
+.bill-info h4 {
+  padding: 0.5rem;
+}
+
+.value {
+  color: var(--primary-color);
+}
+
+.btn {
+  background: var(--primary-color);
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 1rem 1.5rem;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: var(--light-color);
+}
+
+.btn-light {
+  background: var(--light-color);
+  color: var(--primary-color);
+}
+.btn-dark {
+  background: var(--dark-color);
+  color: var(--light-color);
+}
+.btn-tenant-add {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+}
+.btn-tenant-add a {
+  border-radius: 50%;
+}
+.btn-tenant-add a:hover {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  transition: 0.5s all ease-in-out;
+}
+.btn-outline {
+  background: white;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+}
+.btn-outline:hover {
+  background: var(--primary-color);
+  color: var(--light-color);
+  transition: all 0.5s ease-in-out;
+}
+.btn-add-owner {
+  padding: 0.5rem 1.5rem;
+  margin-top: 1rem;
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+.text-dark {
+  color: var(--dark-color);
+}
+.text-light {
+  color: var(--light-color);
+}
+.box-action-button a:hover {
+  opacity: 0.7;
+  transition: all 0.5s ease-in;
+  color: var(--dark-color);
+}
+.table-head-row {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.table-body-row {
+  padding: 1rem;
+}
+.year-dropdown {
+  width: 150px;
+  border-style: none;
+  border: 0.5px solid #777;
+  background: var(--light-color);
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  border-radius: 5px;
+  font-family: inherit;
+}
+.tenant-info {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+}
+
+.tenant-info h4 {
+  padding: 1rem;
+}
+.tenant-info-sub-heading {
+  columns: var(--dark-color);
+}
+
+.landing-content {
+  background: url("./assets/img/architectural-design-architecture-beach-bridge-453201.jpg")
+    center center/cover;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  /* margin-top: 70px; */
+  overflow: hidden;
+}
+.landing-content :nth-child(1) {
+  grid-column: 1 / span 2;
+}
+
+.landing-content .box {
+  margin-top: 10rem;
+  margin-right: 20rem;
+}
+.custom-img-bg {
+  height: 100vh;
+}
+
+.landing-content h1 {
+  font-size: 4rem;
+  /* color: var(--primary-color); */
+  color: white;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.landing-content p {
+  font-size: 2rem;
+  padding: 2rem;
+  color: var(--light-color);
+}
+
+.landing-content-btn {
+  display: inline;
+}
+.landing-content-btn a {
+  margin: 0 1rem;
+  padding: 1rem 2rem;
+}
+.landing-content-btn a:hover {
+  background: var(--dark-color);
+  color: white;
+  transition: all 0.5s ease-in-out;
+}
+
+.register {
+  margin-top: 5rem;
+}
+.custom-label {
+  margin-bottom: 0;
+}
+.content-dashboard {
+  display: grid;
+  grid-template-columns: 1fr 5fr 2fr;
+  margin-top: 70px;
+  width: 100%px;
+  /* position: absolute;
+  top: 70px;
+  left: 0px;
+  width: 100%;
+  height: 90vh;
+  overflow: hidden; */
+}
+.grid-two-by-four {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.flat-owner-info {
+  padding: 1rem;
+}
+#grid-one-by-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+#grid-one-by-three {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  max-width: 900px;
+}
+#grid-one-by-two h1 {
+  color: var(--primary-color);
+}
+.landing-screen-text {
+  grid-column: 1 / span 2;
+}
+.bg-light {
+  background: white;
+}
+.bg-grey {
+  background: var(--light-color);
+}
+.small-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px soli var(--light-color);
+  border-radius: 5px;
+  padding: 1rem;
+  text-align: center;
+  gap: 1rem;
+}
+.small-box h5 {
+  font-size: 1.2rem;
+  padding: 0.5rem 0;
+}
+.small-box :nth-child(7) {
+  grid-column: 1 / span 2;
+}
+.small-box a:hover {
+  background: var(--dark-color);
+  color: var(--light-color);
+  transition: all 0.5s ease-in-out;
+}
+.box-notice {
+  margin: 0 2rem;
+  margin-right: 0;
+  border-radius: 5px;
+  border: 1px solid var(--light-color);
+}
+.notice-box {
+  background: white;
+  border-bottom: 1px solid var(--light-color);
+  color: #777;
+  margin: 0;
+  padding: 1rem 1rem;
+}
+.notice-box:hover {
+  background: #f7f7f7;
+  color: #333;
+  transition: all 0.5s ease-in;
+}
+.box-form {
+  max-width: 30rem;
+  margin: 7rem 0;
+}
+.box-form .btn-primary {
+  padding: 1rem 2rem;
+}
+.box-form p {
+  color: var(--dark-color);
+  font-size: 1rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.form-group input,
+.form-group label {
+  display: block;
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+.form-group input {
+  border: 1px solid #ccc;
+  margin-top: 0.25rem;
+  width: 80%;
+}
+.roles {
+  display: flex;
+  flex-direction: row;
+  padding-top: 1rem;
+}
+.form-group input[type="radio"] {
+  width: 5%;
+}
+.form-group label {
+  width: auto;
+}
+.form-group input[type="radio"]:checked {
+  background-color: var(--primary-color);
+  color: red;
+}
+.form-group input[type="text"] {
+  padding-top: 0.25rem;
+}
+
+/*-- Start Admin--*/
+/* Owners */
+.search-box {
+  display: grid;
+  grid-template-columns: 3fr 2fr 1fr;
+}
+.search-box-bill {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr;
+}
+
+.search-box input,
+.search-box select,
+.search-box-bill input,
+.search-box-bill select {
+  padding: 0.5rem;
+  height: 2.5rem;
+  font-family: "Nunito", sans-serif;
+}
+.search-box a,
+.search-box-bill a {
+  text-align: center;
+  height: 2.5rem;
+  padding: 0.5rem 1rem;
+}
+.search-box input,
+.search-box-bill input {
+  border: 1px solid var(--light-color);
+  border-radius: 5px;
+  font-family: "Nunito", sans-serif;
+}
+.select-filter {
+  position: relative;
+  font-family: "Nunito", sans-serif;
+  border: 1px solid var(--light-color);
+  border-radius: 5px;
+  background: white;
+}
+.select-filter:focus {
+  background: var(--light-color);
+  border: 1px solid var(--light-color);
+}
+.select-filter:selected {
+  background-color: var(--primary-color);
+}
+.add-owner a:hover {
+  background: var(--dark-color);
+  transition: all 0.5s ease-in-out;
+  color: var(--light-color);
+  padding: 0.4rem;
+  border-radius: 5px;
+  padding-right: 0.8rem;
+}
+.add-owner-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+.add-owner-form .form-group {
+  align-items: start;
+}
+.add-owner-form .form-group input {
+  width: 100%;
+  border: 1px solid var(--light-color);
+  padding: 0.5rem;
+  font-family: "Nunito", sans-serif;
+}
+.add-owner-form .form-group input:focus {
+  border: 1px solid var(--light-color);
+}
+.add-owner-form :nth-child(7) {
+  grid-column: 3 / span 1;
+  justify-content: end;
+  text-align: center;
+  align-items: flex-end;
+  max-width: 200px;
+}
+.table-head-row td {
+  border-bottom: 1px solid var(--primary-color);
+  padding: 0.5rem;
+}
+.table-body-row td {
+  padding: 0.5rem;
+}
+.table-body-row a i:hover {
+  color: var(--primary-color);
+  transition: all 0.3s ease-in;
+}
+.bills-table table {
+  overflow: auto;
+  width: 100%;
+}
+
+/* Ipad */
+@media screen and (max-width: 768px) {
+  #navbar i {
+    padding: 1rem;
+  }
+  .landing-content {
+    height: 100%;
+  }
+  .custom-img-bg {
+    height: 100vh;
+  }
+  .register {
+    margin-top: 3rem;
+  }
+  .landing-content h1 {
+    font-size: 2.5rem;
+  }
+  .landing-content p {
+    font-size: 1.5rem;
+  }
+  #navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+  .box {
+    margin-top: 10rem;
+  }
+  .box .box-form {
+    max-width: 80%;
+  }
+  .box-form p {
+    font-size: 0.8rem;
+  }
+  .search-box,
+  .owner-info-box {
+    margin-top: 0;
+  }
+  .content-dashboard {
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+  }
+  #grid-one-by-two {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .owner-info-box-content {
+    display: flex !important;
+    flex-direction: column-reverse;
+    padding: 0rem 1rem;
+  }
+  .owner-info-box {
+    max-width: 10rem !important;
+  }
+}
+
+/* Phone */
+@media screen and (max-width: 475px) {
+  #navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+  #navbar i {
+    padding: 1rem;
+  }
+  #navbar h1 {
+    font-size: 1rem;
+  }
+  #navbar ul li {
+    font-size: 0.8rem;
+  }
+  #navbar ul li i,
+  #navbar ul li a {
+    padding: 1rem 0.5rem;
+  }
+  .landing-content h1 {
+    font-size: 2.5rem;
+  }
+  .landing-content p {
+    font-size: 1.5rem;
+  }
+  .register {
+    margin-top: 3rem;
+  }
+  .box {
+    margin-top: 5rem;
+  }
+  .box-form {
+    max-width: 80%;
+  }
+  .box-form p {
+    font-size: 0.8rem;
+  }
+  .sidebar {
+    display: none;
+  }
+  #content {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: auto;
+    height: 100%;
+  }
+  .content-dashboard {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  #grid-one-by-two {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .box {
+    width: 91.75%;
+    margin: 0 1rem;
+  }
+  .grid-two-by-four {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .small-box h5 {
+    font-size: 0.8rem;
+  }
+  .box-notice {
+    margin: 1rem 1rem;
+  }
+  /* Mybill page style */
+  .main-content-heading {
+    margin-top: 1rem;
+  }
+  .bill-info {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .main-content {
+    width: 100vw;
+    padding-right: 0;
+  }
+  .main-content .box {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .bills-table {
+    overflow: auto;
+    width: 100%;
+  }
+
+  /* owners page */
+  #grid-one-by-three {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .search-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .search-box :nth-child(3) {
+    grid-column: 1 / span 2;
+  }
+  .owner-info-box {
+    max-width: 100vw;
+  }
+}
