@@ -58,6 +58,9 @@ ul {
 .w-100 {
   max-width: 100%;
 }
+.mt-2 {
+  margin-top: 2rem;
+}
 .justify-c {
   justify-content: center;
   align-items: center;
