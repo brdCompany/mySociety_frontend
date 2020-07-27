@@ -351,6 +351,9 @@ ul {
   /* margin-top: 70px; */
   overflow: hidden;
 }
+.landing-content-register {
+  overflow: auto;
+}
 .landing-content :nth-child(1) {
   grid-column: 1 / span 2;
 }
@@ -388,6 +391,10 @@ ul {
   background: var(--dark-color);
   color: white;
   transition: all 0.5s ease-in-out;
+}
+.landing-content .box-form {
+  margin-top: 5rem;
+  height: 80%;
 }
 
 .register {
@@ -525,6 +532,11 @@ ul {
 }
 .form-group input[type="text"] {
   padding-top: 0.25rem;
+}
+.alert {
+  color: red;
+  font-size: 1rem;
+  padding: 0 1rem;
 }
 
 /*-- Start Admin--*/
