@@ -64,6 +64,9 @@ input:focus {
 .mt-2 {
   margin-top: 2rem;
 }
+.mb-2 {
+  margin-bottom: 2rem;
+}
 .justify-c {
   justify-content: center;
   align-items: center;
@@ -408,6 +411,7 @@ input:focus {
 }
 .login {
   margin-top: 10rem !important;
+  height: fit-content !important;
 }
 .custom-label {
   margin-bottom: 0;

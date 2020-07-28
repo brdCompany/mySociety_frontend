@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,11 +10,20 @@ export class LoginService {
 
   constructor(private http: HttpClient) {}
 
-  validateUserLogin(email: string, password: string, role: string): void {
-    this.http
-      .post(this.LOGIN_URL, { email, password, role })
-      .subscribe((data) => {
-        console.log(data);
-      });
+  // validateUserLogin(email: string, password: string, role: string): void {
+  //   this.http
+  //     .post(this.LOGIN_URL, { email, password, role })
+  //     .subscribe((data) => {
+  //       console.log(data);
+  //     });
+  // }
+
+  validateUserLogin(
+    email: string,
+    password: string,
+    role: string
+  ): Observable<any> {
+    console.log('Inside validateUserLogin');
+    return this.http.post(this.LOGIN_URL, { email, password, role });
   }
 }
