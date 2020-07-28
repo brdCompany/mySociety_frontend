@@ -1,7 +1,7 @@
 <div class="loading-spinner" *ngIf="loading">
   <img src="../../../assets/img/loading.gif" alt="" />
 </div>
-<div class="landing-content">
+<div class="landing-content" *ngIf="!loading">
   <div class="justify-c">
     <h1>Manage all your Society needs</h1>
     <p>Handling all requirements of your Society was never easier</p>

@@ -26,8 +26,9 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (data) => {
           localStorage.setItem('currentUser', data.token);
-          this.loading = false;
+
           this.router.navigate(['/admin-dashboard']);
+          this.loading = false;
         },
         (error: any) => {
           console.log(error);

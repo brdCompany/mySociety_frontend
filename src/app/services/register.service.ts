@@ -12,10 +12,7 @@ export class RegisterService {
 
   constructor(private http: HttpClient) {}
 
-  registerUser(user: User) {
-    console.log('Inside registerUser service method');
-    this.http.post<User>(this.REGISTER_USER_URL, user).subscribe((data) => {
-      console.log('User created: ' + data);
-    });
+  registerUser(user: User): Observable<any> {
+    return this.http.post<User>(this.REGISTER_USER_URL, user);
   }
 }
