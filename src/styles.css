@@ -29,6 +29,9 @@ ul {
   list-style: none;
 }
 
+input:focus {
+  border: 1px solid var(--primary-color) !important;
+}
 .px-half {
   padding: 0 0.5rem;
 }
@@ -260,6 +263,7 @@ ul {
 .btn-light {
   background: var(--light-color);
   color: var(--primary-color);
+  font-weight: bold;
 }
 .btn-dark {
   background: var(--dark-color);
@@ -339,8 +343,9 @@ ul {
 }
 
 .landing-content {
-  background: url("./assets/img/architectural-design-architecture-beach-bridge-453201.jpg")
-    center center/cover;
+  /* background: url("./assets/img/architectural-design-architecture-beach-bridge-453201.jpg")
+    center center/cover; */
+  background: white;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
@@ -368,8 +373,8 @@ ul {
 
 .landing-content h1 {
   font-size: 4rem;
-  /* color: var(--primary-color); */
-  color: white;
+  color: var(--primary-color);
+  /* color: white; */
   padding: 1rem;
   font-weight: bold;
 }
@@ -377,7 +382,8 @@ ul {
 .landing-content p {
   font-size: 2rem;
   padding: 2rem;
-  color: var(--light-color);
+  /* color: var(--light-color); */
+  color: var(--dark-color);
 }
 
 .landing-content-btn {
@@ -399,6 +405,9 @@ ul {
 
 .register {
   margin-top: 5rem;
+}
+.login {
+  margin-top: 10rem !important;
 }
 .custom-label {
   margin-bottom: 0;

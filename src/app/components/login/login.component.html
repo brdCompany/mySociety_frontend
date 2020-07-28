@@ -3,29 +3,76 @@
     <h1>Manage all your Society needs</h1>
     <p>Handling all requirements of your Society was never easier</p>
   </div>
-  <div class="box box-form register">
-    <form action="#" method="post">
+  <div class="box box-form login">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
       <h3 class="value">Sign in to My Society</h3>
       <div class="form-group">
-        <label for="Username">Username</label>
-        <input type="text" name="username" />
+        <label for="Email">Email</label>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          required
+          #userEmail="ngModel"
+        />
+        <div
+          class="alert"
+          [hidden]="!userEmail.errors?.required || userEmail.pristine"
+        >
+          Email is required
+        </div>
       </div>
       <div class="form-group">
         <label for="Password">Password</label>
-        <input type="text" name="password" />
+        <input
+          type="text"
+          name="password"
+          [(ngModel)]="password"
+          required
+          minlength="8"
+          #userPassword="ngModel"
+        />
+        <div
+          class="alert"
+          [hidden]="!userPassword.errors || userPassword.pristine"
+        >
+          Password is required and must be atleast eight characters
+        </div>
       </div>
       <div class="form-group roles py-1">
         <input
           type="radio"
           id="facilityManagement"
           name="user_role"
-          value="facilityManagement"
+          value="admin"
+          [(ngModel)]="role"
+          #userRole="ngModel"
+          required
         />
         <label for="Facility Management">Facility Management</label><br />
-        <input type="radio" id="resident" name="user_role" value="resident" />
+        <input
+          type="radio"
+          id="resident"
+          name="user_role"
+          value="resident"
+          [(ngModel)]="role"
+        />
         <label for="Resident">Resident</label><br />
+        <div
+          class="alert"
+          [hidden]="!userRole.errors?.required || userRole.pristine"
+        >
+          Role is required
+        </div>
       </div>
-      <a href="" class="btn btn-primary py-1">Login</a>
+      <button
+        type="submit"
+        class="btn btn-primary py-1"
+        [disabled]="!loginForm.form.valid"
+        [ngClass]="{ 'btn-light': !loginForm.form.valid }"
+      >
+        Login
+      </button>
       <p>
         Not Registered?
         <a href="register.html" class="value">Sign up now</a>
