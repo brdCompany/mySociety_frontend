@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
       .validateUserLogin(this.email, this.password, this.role)
       .subscribe(
         (data) => {
-          this.token = data.token;
+          localStorage.setItem('currentUser', data.token);
         },
         (error: any) => {
           console.log(error);
