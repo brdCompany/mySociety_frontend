@@ -204,6 +204,14 @@ input {
   border-radius: 5px;
   max-width: 15rem;
 }
+.loading-spinner {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 /* search owner */
 .box .box-header-primary {
   margin: 0;
