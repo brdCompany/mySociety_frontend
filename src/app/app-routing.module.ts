@@ -8,6 +8,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AdminMainContentComponent } from './components/admin-main-content/admin-main-content.component';
 import { NoticeBoardComponent } from './components/notice-board/notice-board.component';
 import { AdminMyDashboardComponent } from './components/admin-my-dashboard/admin-my-dashboard.component';
+import { AuthGuard } from './guard/auth-guard.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   {
     path: 'admin-dashboard',
     component: AdminDashboardComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: 'sidebar', component: SidebarComponent },
       {
@@ -32,7 +34,11 @@ const routes: Routes = [
       },
     ],
   },
-  { path: 'resident-dashboard', component: ResidentDashboardComponent },
+  {
+    path: 'resident-dashboard',
+    component: ResidentDashboardComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

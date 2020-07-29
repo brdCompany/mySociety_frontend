@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
       .validateUserLogin(this.email, this.password, this.role)
       .subscribe(
         (data) => {
-          localStorage.setItem('currentUser', data.token);
+          localStorage.setItem('token', data.token);
           if (this.role == 'admin') {
             this.router.navigate(['/admin-dashboard']);
           } else {
