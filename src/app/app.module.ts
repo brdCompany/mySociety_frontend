@@ -9,6 +9,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { ResidentDashboardComponent } from './components/resident-dashboard/resident-dashboard.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { AdminMainContentComponent } from './components/admin-main-content/admin-main-content.component';
+import { NoticeBoardComponent } from './components/notice-board/notice-board.component';
+import { AdminMyDashboardComponent } from './components/admin-my-dashboard/admin-my-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +22,10 @@ import { ResidentDashboardComponent } from './components/resident-dashboard/resi
     RegisterComponent,
     AdminDashboardComponent,
     ResidentDashboardComponent,
+    SidebarComponent,
+    AdminMainContentComponent,
+    NoticeBoardComponent,
+    AdminMyDashboardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
