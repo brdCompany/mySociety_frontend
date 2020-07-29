@@ -26,8 +26,11 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (data) => {
           localStorage.setItem('currentUser', data.token);
-
-          this.router.navigate(['/admin-dashboard']);
+          if (this.role == 'admin') {
+            this.router.navigate(['/admin-dashboard']);
+          } else {
+            this.router.navigate(['/resident-dashboard']);
+          }
           this.loading = false;
         },
         (error: any) => {

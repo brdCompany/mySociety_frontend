@@ -8,6 +8,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { ResidentDashboardComponent } from './components/resident-dashboard/resident-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     NavbarComponent,
     RegisterComponent,
     AdminDashboardComponent,
+    ResidentDashboardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
