@@ -1,0 +1,53 @@
+<div>
+  <div>
+    <h3 class="text-primary p-1">
+      <button
+        class="btn btn-light px-half mr-1"
+        (click)="formOpened = !formOpened"
+      >
+        <i class="fa fa-plus"></i> New Notice
+      </button>
+      <button class="btn btn-light px-half">
+        <i class="fa fa-envelope"></i> Mass Email
+      </button>
+    </h3>
+    <div class="box" *ngIf="formOpened">
+      <form
+        class="add-notice-form"
+        #noticeForm="ngForm"
+        (ngSubmit)="onSubmit(noticeForm)"
+      >
+        <div class="form-group">
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Notice Title"
+            [(ngModel)]="notice.title"
+          />
+        </div>
+        <div class="form-group">
+          <textarea
+            id="noticeContent"
+            name="noticeContent"
+            rows="4"
+            cols="50"
+            [(ngModel)]="notice.content"
+          ></textarea>
+        </div>
+        <div class="box-action-button py-half">
+          <button type="submit" class="btn btn-primary btn-add-owner">
+            Send Notice
+          </button>
+        </div>
+      </form>
+    </div>
+    <h3 class="text-primary p-1">
+      <i class="fa fa-search px-half"></i> Search notice
+    </h3>
+    <div class="box search-box-notice">
+      <input type="text" class="" placeholder="Enter search term" />
+      <a href="" class="btn btn-dark">Search</a>
+    </div>
+  </div>
+</div>

@@ -1,23 +1,21 @@
 <div class="box-notice bg-grey">
   <h3 class="p-1">Noticeboard</h3>
-  <div class="notice-box py-1">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa odit
-    consequuntur magnam recusandae nisi soluta pariatur perspiciatis dicta error
-    est?
-  </div>
-  <div class="notice-box py-1">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa odit
-    consequuntur magnam recusandae nisi soluta pariatur perspiciatis dicta error
-    est?
-  </div>
-  <div class="notice-box py-1">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa odit
-    consequuntur magnam recusandae nisi soluta pariatur perspiciatis dicta error
-    est?
-  </div>
-  <div class="notice-box py-1">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa odit
-    consequuntur magnam recusandae nisi soluta pariatur perspiciatis dicta error
-    est?
+  <div class="notice-box py-1" *ngFor="let notice of notices">
+    <div class="notice-header">
+      <div class="notice-posted-info">
+        <a href="" class="profile-pic-circle">{{
+          notice.title.substring(0, 1)
+        }}</a>
+        <h6 class="text-primary notice-timestamp">
+          {{ notice.postedAt | date: "medium" }}
+        </h6>
+      </div>
+      <div class="pb-3">
+        <h4>{{ notice.title }}</h4>
+      </div>
+    </div>
+    <div class="notice-body">
+      {{ notice.content }}
+    </div>
   </div>
 </div>
