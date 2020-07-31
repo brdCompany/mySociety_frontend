@@ -13,6 +13,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NoticeBoardComponent } from './components/notice-board/notice-board.component';
 import { AdminMyDashboardComponent } from './components/admin-my-dashboard/admin-my-dashboard.component';
 import { NoticesComponent } from './components/notices/notices.component';
+import { NoticePipe } from './pipes/notice.pipe';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { NoticesComponent } from './components/notices/notices.component';
     NoticeBoardComponent,
     AdminMyDashboardComponent,
     NoticesComponent,
+    NoticePipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

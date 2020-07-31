@@ -17,6 +17,7 @@
         #noticeForm="ngForm"
         (ngSubmit)="onSubmit(noticeForm)"
       >
+        <div class="form-group"><h4 class="pb-1">Create New Notice</h4></div>
         <div class="form-group">
           <input
             type="text"
@@ -42,12 +43,63 @@
         </div>
       </form>
     </div>
-    <h3 class="text-primary p-1">
-      <i class="fa fa-search px-half"></i> Search notice
+    <h3 class="text-primary px-1 pb-1">
+      <i class="fa fa-search px-half"></i> Find a notice
     </h3>
     <div class="box search-box-notice">
-      <input type="text" class="" placeholder="Enter search term" />
-      <a href="" class="btn btn-dark">Search</a>
+      <input
+        type="text"
+        class=""
+        placeholder="Enter search term"
+        [(ngModel)]="searchTerm"
+        #search="ngModel"
+        name="searchInput"
+      />
+      <!-- <select
+        class="select-filter"
+        name="noticeSearchFilter"
+        id="noticeSearchFilter"
+        [(ngModel)]="noticeSearchFilter"
+      >
+        <option value="title">Search By Title</option>
+        <option value="postedAt">Posted On</option>
+        <option value="expiresOn">Expiry Date</option>
+      </select> -->
+      <button (click)="searchNotice(searchTerm)" class="btn btn-dark">
+        Search
+      </button>
+    </div>
+    <div class="box mt-1">
+      <div class="bills-table">
+        <table>
+          <thead>
+            <tr class="table-head-row">
+              <td>Notice Title</td>
+              <td>Posted On</td>
+              <td>Expiry Date</td>
+              <td>Actions</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-body-row" *ngFor="let notice of filteredResults">
+              <td class="py-1">{{ notice.title }}</td>
+              <td>{{ notice.postedAt | date: "shortDate" }}</td>
+              <td>{{ notice.expiresOn | date: "medium" }}</td>
+              <td>
+                <a href=""
+                  ><i class="fa fa-edit px-half" aria-hidden="true"></i
+                ></a>
+                <a href=""
+                  ><i class="fa fa-trash px-half" aria-hidden="true"></i
+                ></a>
+                <a href=""
+                  ><i class="fa fa-download px-half" aria-hidden="true"></i
+                ></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
