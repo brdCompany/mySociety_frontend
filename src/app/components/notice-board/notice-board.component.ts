@@ -21,8 +21,19 @@ export class NoticeBoardComponent implements OnInit {
       this.notices = data;
       console.log(this.notices);
     });
+
     this.noticeService.newNoticeEmitter.subscribe((newNotice) => {
       this.notices.unshift(newNotice);
+    });
+
+    this.noticeService.updateNoticeEmitter.subscribe((updatedNotice) => {
+      this.noticeService.getNotices().subscribe((data) => {
+        data.sort((a, b) => {
+          if (b.postedAt > a.postedAt) return 1;
+          else return -1;
+        });
+        this.notices = data;
+      });
     });
   }
 }

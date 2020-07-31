@@ -11,11 +11,12 @@
         <i class="fa fa-envelope"></i> Mass Email
       </button>
     </h3>
+    <!-- Create notice form -->
     <div class="box" *ngIf="formOpened">
       <form
         class="add-notice-form"
         #noticeForm="ngForm"
-        (ngSubmit)="onSubmit(noticeForm)"
+        (ngSubmit)="createNotice(noticeForm)"
       >
         <div class="form-group"><h4 class="pb-1">Create New Notice</h4></div>
         <div class="form-group">
@@ -39,6 +40,45 @@
         <div class="box-action-button py-half">
           <button type="submit" class="btn btn-primary btn-add-owner">
             Send Notice
+          </button>
+        </div>
+      </form>
+    </div>
+    <!-- Edit notice form -->
+    <div class="box" *ngIf="editMode">
+      <form
+        class="add-notice-form"
+        #noticeEditForm="ngForm"
+        (ngSubmit)="editNotice(noticeEditForm)"
+      >
+        <div class="form-group"><h4 class="pb-1">Edit Notice</h4></div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Notice Title"
+            [(ngModel)]="editedNotice.title"
+          />
+        </div>
+        <div class="form-group">
+          <textarea
+            id="content"
+            name="content"
+            rows="4"
+            cols="50"
+            [(ngModel)]="editedNotice.content"
+          ></textarea>
+        </div>
+        <div class="box-action-button py-half">
+          <button
+            (click)="discardEditForm()"
+            class="btn btn-dark btn-add-owner mr-1"
+          >
+            Discard Changes
+          </button>
+          <button type="submit" class="btn btn-primary btn-add-owner">
+            Save Changes
           </button>
         </div>
       </form>
@@ -86,9 +126,9 @@
               <td>{{ notice.postedAt | date: "shortDate" }}</td>
               <td>{{ notice.expiresOn | date: "medium" }}</td>
               <td>
-                <a href=""
-                  ><i class="fa fa-edit px-half" aria-hidden="true"></i
-                ></a>
+                <button (click)="showEditForm(notice)">
+                  <i class="fa fa-edit px-half" aria-hidden="true"></i>
+                </button>
                 <a href=""
                   ><i class="fa fa-trash px-half" aria-hidden="true"></i
                 ></a>

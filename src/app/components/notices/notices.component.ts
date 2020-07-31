@@ -17,7 +17,9 @@ export class NoticesComponent implements OnInit {
     expiresOn: null,
   };
   formOpened: boolean = false;
+  editMode: boolean = false;
   createdNotice: Notice;
+  editedNotice: Notice;
   notices: Notice[];
   searchTerm: string;
   filteredResults: Notice[];
@@ -31,9 +33,12 @@ export class NoticesComponent implements OnInit {
         if (b.postedAt > a.postedAt) return 1;
         else return -1;
       });
-      console.log(result);
       this.notices = result;
       this.filteredResults = this.notices;
+    });
+    this.noticeService.newNoticeEmitter.subscribe((newNotice) => {
+      this.notices.unshift(newNotice);
+      this.filteredResults.unshift(newNotice);
     });
   }
 
@@ -43,7 +48,7 @@ export class NoticesComponent implements OnInit {
     this.notice.expiresOn.setDate(this.notice.postedAt.getDate() + 7);
   }
 
-  onSubmit(noticeForm: NgForm) {
+  createNotice(noticeForm: NgForm) {
     this.setNoticeDate();
     this.noticeService.createNotice(this.notice).subscribe((data) => {
       console.log(data);
@@ -53,11 +58,26 @@ export class NoticesComponent implements OnInit {
   }
 
   searchNotice(searchTerm: string) {
-    console.log(`Inside searchNotice ${searchTerm}`);
     this.filteredResults = this.notices.filter((element) => {
       let title = element.title.toLowerCase();
       let input = searchTerm.toLowerCase();
       return title.includes(input);
     });
+  }
+  showEditForm(editedNotice: Notice) {
+    this.editedNotice = editedNotice;
+    this.editMode = true;
+  }
+  editNotice(noticeEditForm: NgForm) {
+    this.editedNotice.title = noticeEditForm.value.title;
+    this.editedNotice.content = noticeEditForm.value.content;
+    this.noticeService.updateNotice(this.editedNotice).subscribe((result) => {
+      console.log(result);
+      this.editMode = !this.editMode;
+      this.noticeService.updateNoticeEmitter.emit(this.editedNotice);
+    });
+  }
+  discardEditForm() {
+    this.editMode = !this.editMode;
   }
 }

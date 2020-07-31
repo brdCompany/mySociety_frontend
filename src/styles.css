@@ -356,6 +356,13 @@ input {
 .table-body-row {
   padding: 1rem;
 }
+.table-body-row button {
+  border: none;
+}
+.table-body-row button:hover {
+  color: var(--primary-color);
+  transition: all 0.5s ease-in;
+}
 .year-dropdown {
   width: 150px;
   border-style: none;
