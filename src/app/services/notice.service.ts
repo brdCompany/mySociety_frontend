@@ -11,6 +11,7 @@ export class NoticeService {
   NOTICE_URL = 'http://localhost:5500/api/v1/notices';
   httpHeaders: HttpHeaders;
   newNoticeEmitter = new EventEmitter<Notice>();
+  updateNoticeEmitter = new EventEmitter<Notice>();
 
   constructor(private http: HttpClient) {}
 
@@ -22,6 +23,15 @@ export class NoticeService {
 
   createNotice(notice: Notice): Observable<any> {
     return this.http.post<any>(this.NOTICE_URL, notice, this.getAuthHeader());
+  }
+
+  updateNotice(updatedNotice: Notice): Observable<any> {
+    console.log(updatedNotice);
+    return this.http.put<any>(
+      this.NOTICE_URL,
+      updatedNotice,
+      this.getAuthHeader()
+    );
   }
 
   getAuthHeader(): {} {
