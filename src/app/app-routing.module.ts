@@ -9,6 +9,7 @@ import { NoticeBoardComponent } from './components/notice-board/notice-board.com
 import { AdminMyDashboardComponent } from './components/admin-my-dashboard/admin-my-dashboard.component';
 import { AuthGuard } from './guard/auth-guard.guard';
 import { NoticesComponent } from './components/notices/notices.component';
+import { BillComponent } from './components/bill/bill.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: 'notices',
         component: NoticesComponent,
+      },
+      {
+        path: 'bills',
+        component: BillComponent,
       },
       {
         path: '',

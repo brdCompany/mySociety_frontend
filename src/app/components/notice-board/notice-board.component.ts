@@ -15,6 +15,7 @@ export class NoticeBoardComponent implements OnInit {
   ngOnInit(): void {
     this.noticeService.getNotices().subscribe((data) => {
       this.notices = data;
+      console.log(this.notices);
     });
     this.noticeService.newNoticeEmitter.subscribe((newNotice) => {
       this.notices.unshift(newNotice);

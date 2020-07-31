@@ -6,13 +6,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './components/register/register.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { ResidentDashboardComponent } from './components/resident-dashboard/resident-dashboard.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NoticeBoardComponent } from './components/notice-board/notice-board.component';
 import { AdminMyDashboardComponent } from './components/admin-my-dashboard/admin-my-dashboard.component';
 import { NoticesComponent } from './components/notices/notices.component';
+import { AuthInterceptor } from './auth/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import { NoticesComponent } from './components/notices/notices.component';
     NoticesComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
