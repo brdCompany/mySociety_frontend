@@ -14,6 +14,8 @@ import { NoticeBoardComponent } from './components/notice-board/notice-board.com
 import { AdminMyDashboardComponent } from './components/admin-my-dashboard/admin-my-dashboard.component';
 import { NoticesComponent } from './components/notices/notices.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
+import { NoticePipe } from './pipes/notice.pipe';
+import { BillComponent } from './components/bill/bill.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     SidebarComponent,
     NoticeBoardComponent,
     AdminMyDashboardComponent,
+    BillComponent,
     NoticesComponent,
+    NoticePipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [

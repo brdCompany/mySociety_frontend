@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Notice } from 'src/app/models/Notice';
 import { NoticeService } from 'src/app/services/notice.service';
 import { NgForm } from '@angular/forms';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-notices',
@@ -17,10 +18,24 @@ export class NoticesComponent implements OnInit {
   };
   formOpened: boolean = false;
   createdNotice: Notice;
+  notices: Notice[];
+  searchTerm: string;
+  filteredResults: Notice[];
 
   constructor(private noticeService: NoticeService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('getNotices called');
+    this.noticeService.getNotices().subscribe((result) => {
+      result.sort((a, b) => {
+        if (b.postedAt > a.postedAt) return 1;
+        else return -1;
+      });
+      console.log(result);
+      this.notices = result;
+      this.filteredResults = this.notices;
+    });
+  }
 
   setNoticeDate() {
     this.notice.postedAt = new Date();
@@ -34,6 +49,15 @@ export class NoticesComponent implements OnInit {
       console.log(data);
       this.noticeService.newNoticeEmitter.emit(this.notice);
       this.formOpened = false;
+    });
+  }
+
+  searchNotice(searchTerm: string) {
+    console.log(`Inside searchNotice ${searchTerm}`);
+    this.filteredResults = this.notices.filter((element) => {
+      let title = element.title.toLowerCase();
+      let input = searchTerm.toLowerCase();
+      return title.includes(input);
     });
   }
 }

@@ -14,6 +14,10 @@ export class NoticeBoardComponent implements OnInit {
 
   ngOnInit(): void {
     this.noticeService.getNotices().subscribe((data) => {
+      data.sort((a, b) => {
+        if (b.postedAt > a.postedAt) return 1;
+        else return -1;
+      });
       this.notices = data;
       console.log(this.notices);
     });
