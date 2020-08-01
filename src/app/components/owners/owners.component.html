@@ -1,0 +1,52 @@
+<div>
+  <!-- Add Owner Section -->
+  <div class="add-owner"></div>
+  <!-- Search Section -->
+  <div>
+    <div>
+      <h3 class="text-primary p-1">
+        <i class="fa fa-search px-half"></i> Search Owners
+      </h3>
+      <div class="box search-box">
+        <input type="text" class="" placeholder="Enter search term" />
+        <select class="select-filter" name="searchFilter" id="searchFilter">
+          <option value="searchBy">Search By</option>
+          <option value="flatNo">Flat no</option>
+          <option value="block">Block</option>
+          <option value="name">Owner name</option>
+          <option value="contactNo">Contact no</option>
+          <option value="email">Email</option>
+        </select>
+        <a href="" class="btn btn-dark">Search</a>
+      </div>
+      <h4 class="text-primary p-1">Search results</h4>
+
+      <div id="grid-one-by-three">
+        <div class="box owner-info-box" *ngFor="let user of users">
+          <div class="box-header-primary">
+            <h4 class="text-light">Flat no {{ user.flat }}</h4>
+            <h5 class="text-light">Block {{ user.block }}</h5>
+          </div>
+          <div id="grid-one-by-two" class="owner-info-box-content">
+            <div class="owner-info-box-details">
+              <h5 class="text-dark">{{ user.name }}</h5>
+              <h5 class="text-dark">{{ user.phone }}</h5>
+              <h5 class="text-dark">{{ user.email }}</h5>
+            </div>
+            <div class="owner-info-box-img">
+              <img src="./assets/img/profile-image.png" alt="" />
+            </div>
+          </div>
+          <div class="box-action-button">
+            <button>
+              <i class="fa fa-trash px-half" aria-hidden="true"></i>
+            </button>
+            <a href="" class="text-primary fa-2x p-1"
+              ><i class="fa fa-arrow-right" aria-hidden="true"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
