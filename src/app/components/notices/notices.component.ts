@@ -3,6 +3,8 @@ import { Notice } from 'src/app/models/Notice';
 import { NoticeService } from 'src/app/services/notice.service';
 import { NgForm } from '@angular/forms';
 import { element } from 'protractor';
+import { Email } from 'src/app/models/Email';
+import { EmailService } from 'src/app/services/email.service';
 
 @Component({
   selector: 'app-notices',
@@ -23,8 +25,20 @@ export class NoticesComponent implements OnInit {
   notices: Notice[];
   searchTerm: string;
   filteredResults: Notice[];
+  emailFormOpened: boolean = false;
+  loading: boolean = false;
+  email: Email = {
+    sender: '',
+    recipients: [],
+    subject: '',
+    body: '',
+    files: [],
+  };
 
-  constructor(private noticeService: NoticeService) {}
+  constructor(
+    private noticeService: NoticeService,
+    private emailService: EmailService
+  ) {}
 
   ngOnInit(): void {
     console.log('getNotices called');
@@ -79,5 +93,26 @@ export class NoticesComponent implements OnInit {
   }
   discardEditForm() {
     this.editMode = !this.editMode;
+  }
+
+  onAttachmentSelected(event: any) {
+    this.email.files = event.target.files;
+    console.log(this.email.files[0]);
+  }
+
+  sendEmail() {
+    this.loading = true;
+    console.log(this.email);
+    this.emailService.sendEmail(this.email).subscribe((data) => {
+      this.emailFormOpened = !this.emailFormOpened;
+      this.loading = false;
+      this.email = {
+        sender: '',
+        recipients: [],
+        subject: '',
+        body: '',
+        files: [],
+      };
+    });
   }
 }
