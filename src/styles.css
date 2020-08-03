@@ -141,6 +141,7 @@ input {
 
 #navbar ul li a {
   padding-right: 0.5rem;
+  cursor: pointer;
 }
 
 #navbar ul li a:hover,

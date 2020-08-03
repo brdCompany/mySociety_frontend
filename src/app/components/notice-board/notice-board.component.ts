@@ -19,7 +19,6 @@ export class NoticeBoardComponent implements OnInit {
         else return -1;
       });
       this.notices = data;
-      console.log(this.notices);
     });
 
     this.noticeService.newNoticeEmitter.subscribe((newNotice) => {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
+import { DataSharingService } from 'src/app/services/data-sharing.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,11 @@ export class LoginComponent implements OnInit {
   token: string;
   loading: boolean = false;
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    private dataSharingService: DataSharingService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -28,6 +33,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', data.token);
           if (this.role == 'admin') {
             this.router.navigate(['/admin-dashboard']);
+            this.dataSharingService.emailEmitter.emit(this.email);
           } else {
             this.router.navigate(['/resident-dashboard']);
           }
