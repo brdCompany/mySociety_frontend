@@ -33,10 +33,10 @@ export class OwnersService {
 
   getOwnerDetails(id): Observable<User> {
     console.log('Inside get details');
-    return this.http.get<User>(
-      `${this.OWNER_API_URL}/${id}`,
-      this.authHeader()
-    );
+
+    return this.http
+      .get<GetResponse>(`${this.OWNER_API_URL}/${id}`, this.authHeader())
+      .pipe(map((response) => response.data));
   }
 
   updateOwner(updatedUser: User): Observable<any> {
@@ -51,4 +51,8 @@ export class OwnersService {
     console.log(this.users);
     return this.http.delete<any>(`${this.OWNER_API_URL}/${id}`);
   }
+}
+
+interface GetResponse {
+  data: User;
 }
