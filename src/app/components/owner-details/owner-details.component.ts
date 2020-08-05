@@ -9,7 +9,7 @@ import { User } from 'src/app/models/User';
   styleUrls: ['./owner-details.component.css'],
 })
 export class OwnerDetailsComponent implements OnInit {
-  user: any;
+  public user: any;
   constructor(
     private route: ActivatedRoute,
     private ownerService: OwnersService
@@ -23,9 +23,9 @@ export class OwnerDetailsComponent implements OnInit {
 
   handleOwnerDetails() {
     const ownerId = this.route.snapshot.paramMap.get('_id');
-    this.ownerService.getOwnerDetails(ownerId).subscribe((data) => {
-      this.user = data;
-      console.log('Owner deatils' + data);
+    this.ownerService.getOwnerDetails(ownerId).subscribe((res) => {
+      this.user = res;
+      console.log('Owner deatils', this.user);
     });
   }
 }
