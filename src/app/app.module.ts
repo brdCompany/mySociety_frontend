@@ -17,6 +17,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
 import { NoticePipe } from './pipes/notice.pipe';
 import { BillComponent } from './components/bill/bill.component';
 import { OwnersComponent } from './components/owners/owners.component';
+import { OwnerDetailsComponent } from './components/owner-details/owner-details.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { OwnersComponent } from './components/owners/owners.component';
     NoticesComponent,
     NoticePipe,
     OwnersComponent,
+    OwnerDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [

@@ -11,6 +11,7 @@ import { AuthGuard } from './guard/auth-guard.guard';
 import { NoticesComponent } from './components/notices/notices.component';
 import { BillComponent } from './components/bill/bill.component';
 import { OwnersComponent } from './components/owners/owners.component';
+import { OwnerDetailsComponent } from './components/owner-details/owner-details.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -33,6 +34,10 @@ const routes: Routes = [
       {
         path: 'owners',
         component: OwnersComponent,
+      },
+      {
+        path: 'owners/:_id',
+        component: OwnerDetailsComponent,
       },
       {
         path: 'bills',

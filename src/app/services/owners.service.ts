@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class OwnersService {
+  users: User[] = [];
   OWNER_API_URL: string = 'http://localhost:5500/api/v1/users';
   httpHeaders: HttpHeaders;
   updateOwnerEmitter = new EventEmitter<User>();
@@ -19,14 +20,35 @@ export class OwnersService {
     let headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
-    let headerOptions = {
+    let options = {
       headers: headers,
     };
-    return headerOptions;
+    return options;
   }
   getOwnerList(): Observable<User[]> {
     return this.http
       .get<{ data: User[] }>(this.OWNER_API_URL, this.authHeader())
       .pipe(map((response) => response.data));
+  }
+
+  getOwnerDetails(id): Observable<User> {
+    console.log('Inside get details');
+    return this.http.get<User>(
+      `${this.OWNER_API_URL}/${id}`,
+      this.authHeader()
+    );
+  }
+
+  updateOwner(updatedUser: User): Observable<any> {
+    console.log(updatedUser);
+    return this.http.put<any>(
+      this.OWNER_API_URL,
+      updatedUser,
+      this.authHeader()
+    );
+  }
+  deleteOwner(id): Observable<any> {
+    console.log(this.users);
+    return this.http.delete<any>(`${this.OWNER_API_URL}/${id}`);
   }
 }

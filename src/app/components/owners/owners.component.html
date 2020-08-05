@@ -21,16 +21,78 @@
       </div>
       <h4 class="text-primary p-1">Search results</h4>
 
+      <!-- Edit Owner form -->
+      <div class="box" *ngIf="editMode">
+        <form
+          class="add-notice-form"
+          #ownerEditForm="ngForm"
+          (ngSubmit)="onEdit(ownerEditForm)"
+        >
+          <div class="form-group"><h4 class="pb-1">Edit Owner</h4></div>
+          <div class="form-group">
+            <input
+              type="text"
+              name="name"
+              id="name"
+              #ownerName="ngModel"
+              placeholder="Owner Name"
+              [(ngModel)]="editedOwner.name"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              name="email"
+              id="email"
+              placeholder="Owner Email"
+              [(ngModel)]="editedOwner.email"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              name="flatNo"
+              id="flatNo"
+              placeholder="Owner Flat No"
+              [(ngModel)]="editedOwner.flatNo"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              name="block"
+              id="block"
+              placeholder="Owner Block"
+              [(ngModel)]="editedOwner.block"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              name="phoneNumber"
+              id="phoneNumber"
+              placeholder="Owner Phone Number"
+              [(ngModel)]="editedOwner.phoneNumber"
+            />
+          </div>
+          <div class="box-action-button py-half">
+            <button type="submit" class="btn btn-primary btn-add-owner">
+              Save Changes
+            </button>
+          </div>
+        </form>
+      </div>
+
       <div id="grid-one-by-three">
         <div class="box owner-info-box" *ngFor="let user of users">
           <div class="box-header-primary">
-            <h4 class="text-light">Flat no {{ user.flat }}</h4>
+            <h4 class="text-light">Flat no {{ user.flatNo }}</h4>
             <h5 class="text-light">Block {{ user.block }}</h5>
           </div>
           <div id="grid-one-by-two" class="owner-info-box-content">
             <div class="owner-info-box-details">
               <h5 class="text-dark">{{ user.name }}</h5>
-              <h5 class="text-dark">{{ user.phone }}</h5>
+              <h5 class="text-dark">{{ user.phoneNumber }}</h5>
               <h5 class="text-dark">{{ user.email }}</h5>
             </div>
             <div class="owner-info-box-img">
@@ -38,10 +100,15 @@
             </div>
           </div>
           <div class="box-action-button">
-            <button>
+            <button (click)="editForm(user)">
+              <i class="fa fa-edit px-half" aria-hidden="true"></i>
+            </button>
+            <button (click)="deleteOwner(user._id)">
               <i class="fa fa-trash px-half" aria-hidden="true"></i>
             </button>
-            <a href="" class="text-primary fa-2x p-1"
+            <a
+              routerLink="/admin-dashboard/owners/{{ user._id }}"
+              class="text-primary fa-2x p-1"
               ><i class="fa fa-arrow-right" aria-hidden="true"></i
             ></a>
           </div>

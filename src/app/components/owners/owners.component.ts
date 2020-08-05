@@ -9,12 +9,15 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./owners.component.css'],
 })
 export class OwnersComponent implements OnInit {
-  users: User[] = [];
+  users: User[];
   editedOwner: User;
   authErrorMsg: string = '';
+  editMode: boolean = false;
   constructor(private ownerService: OwnersService) {}
 
   ngOnInit(): void {
+    this.refreshOwnerList();
+
     this.ownerService.getOwnerList().subscribe(
       (data) => {
         this.users = data;
@@ -24,5 +27,35 @@ export class OwnersComponent implements OnInit {
         this.authErrorMsg = error.statusText;
       }
     );
+  }
+  refreshOwnerList() {
+    this.ownerService.getOwnerList().subscribe((res) => {
+      this.ownerService.users = res as User[];
+    });
+  }
+  editForm(editedOwner: User) {
+    this.editedOwner = editedOwner;
+    this.editMode = true;
+  }
+  onEdit(ownerEditForm: NgForm) {
+    this.editedOwner.name = ownerEditForm.value.name;
+    this.editedOwner.email = ownerEditForm.value.email;
+    this.editedOwner.flatNo = ownerEditForm.value.flatNo;
+    this.editedOwner.block = ownerEditForm.value.block;
+    this.editedOwner.phoneNumber = ownerEditForm.value.phoneNumber;
+    this.ownerService.updateOwner(this.editedOwner).subscribe((result) => {
+      console.log(result);
+      this.editMode = !this.editMode;
+      this.ownerService.updateOwnerEmitter.emit(this.editedOwner);
+    });
+  }
+
+  deleteOwner(_id: string) {
+    if (confirm('are you sure want to remove this record?') == true) {
+      this.ownerService.deleteOwner(_id).subscribe((res) => {
+        this.ownerService.updateOwnerEmitter.emit(res);
+        console.log(res);
+      });
+    }
   }
 }
